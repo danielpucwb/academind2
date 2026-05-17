@@ -11,8 +11,8 @@ See: `.planning/PROJECT.md` (updated 2026-05-17)
 
 Phase: 1 of 5 (Domain Shell & Foundations)
 Plan: 0 of 3 in phase
-Status: Ready to discuss/plan Phase 1
-Last activity: 2026-05-17 — GSD `/gsd-new-project` auto initialization completed (research → requirements → roadmap)
+Status: Planned — awaiting `/gsd-execute-phase 1`
+Last activity: 2026-05-17 — `/gsd-plan-phase 1` produced three executable plans + walking skeleton memo
 
 Progress: [░░░░░░░░░░░░░░░░░░░░] 0%
 

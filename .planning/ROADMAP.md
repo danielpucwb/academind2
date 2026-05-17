@@ -32,7 +32,7 @@ Ship a vertically sliced workstation app: scaffolding + trusted ingestion first,
 4. `/health` returns structured JSON signalling SQLite readiness + FFmpeg binary probing + Whisper lazy-load sentinel.
 5. `config.yaml` values load at startup and fail fast when required knobs are malformed.
 
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
 
