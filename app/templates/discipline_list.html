@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ course.nome }} · acadeMIND{% endblock %}
+{% block content %}
+  <nav class="text-sm text-slate-500 mb-4"><a href="/" class="text-teal-400 hover:underline">Cursos</a> / {{ course.nome }}</nav>
+  <h1 class="text-2xl font-semibold mb-2">{{ course.nome }}</h1>
+  <p class="text-slate-400 mb-6">Gerir disciplinas deste curso.</p>
+
+  {% if error %}
+    <p class="mb-4 form-error">{{ error }}</p>
+  {% endif %}
+
+  <section class="mb-10 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-lg font-medium mb-4">Nova disciplina</h2>
+    <form
+      method="post"
+      action="/ui/disciplinas"
+      hx-post="/ui/disciplinas"
+      hx-target="#disc-rows"
+      hx-swap="outerHTML"
+      class="flex flex-wrap gap-3 items-end"
+    >
+      <input type="hidden" name="curso_id" value="{{ course.id }}" />
+      <label class="flex flex-col gap-1 text-sm">
+        <span class="text-slate-400">Nome</span>
+        <input
+          type="text"
+          name="nome"
+          required
+          class="rounded-md border border-slate-700 bg-slate-950 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        />
+      </label>
+      <button type="submit" class="rounded-md bg-teal-600 hover:bg-teal-500 px-4 py-2 font-medium">
+        Adicionar
+      </button>
+    </form>
+  </section>
+
+  <section class="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-lg font-medium mb-4">Disciplinas</h2>
+    {% include "partials/discipline_rows.html" %}
+  </section>
+{% endblock %}

@@ -1,0 +1,19 @@
+# Copy this file to `config.yaml` and adjust paths for your workstation.
+sqlite_path: database/academind.db
+storage_root: storage/cursos
+ffmpeg_path: ffmpeg
+whisper_model: large-v3
+max_parallel_jobs: 2
+logging_dir: logs
+max_upload_bytes: 536870912  # max ~512MiB per file (streaming guard)
+upload_chunk_bytes: 1048576 # read chunk while hashing
+allowed_extensions:
+  - pdf
+  - txt
+  - docx
+  - html
+  - mhtml
+  - mp4
+  - mp3
+  - wav
+  - m4a

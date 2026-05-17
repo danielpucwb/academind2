@@ -55,7 +55,7 @@
 
 ### Document Consolidation
 
-- [ ] **DOC-01**: System merges discipline PDF originals alphabetically into `concatenado.pdf`, tolerating corrupt pages with explicit failure surfaced. _(Phase 4)_ 
+- [x] **DOC-01**: System merges discipline PDF originals alphabetically into `concatenado.pdf`, tolerating corrupt pages with explicit failure surfaced. _(Phase 4 — **04-01** executed)_ 
 
 ### Packaging & Download
 

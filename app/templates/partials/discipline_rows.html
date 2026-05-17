@@ -1,0 +1,39 @@
+<div id="disc-rows" class="overflow-x-auto">
+  <table class="w-full text-left text-sm">
+    <thead>
+      <tr class="border-b border-slate-800 text-slate-500">
+        <th class="py-2 pr-4">Nome</th>
+        <th class="py-2 pr-4">Slug</th>
+        <th class="py-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in disciplinas %}
+        <tr class="border-b border-slate-800/80">
+          <td class="py-3 pr-4">
+            <a href="/cursos/{{ course.id }}/disciplinas/{{ d.id }}" class="text-teal-400 hover:underline">{{ d.nome }}</a>
+          </td>
+          <td class="py-3 pr-4 font-mono text-slate-500">{{ d.slug }}</td>
+          <td class="py-3 text-right">
+            <form
+              method="post"
+              action="/ui/disciplinas/{{ d.id }}/excluir"
+              hx-post="/ui/disciplinas/{{ d.id }}/excluir"
+              hx-target="#disc-rows"
+              hx-swap="outerHTML"
+              hx-confirm="Excluir disciplina '{{ d.nome }}'?"
+            >
+              <input type="hidden" name="curso_id" value="{{ course.id }}" />
+              <button type="submit" class="text-rose-400 hover:text-rose-300 text-xs">Excluir</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      {% if not disciplinas %}
+        <tr>
+          <td colspan="3" class="py-6 text-slate-500">Nenhuma disciplina ainda.</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>

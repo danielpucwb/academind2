@@ -1,0 +1,15 @@
+{% if alert_lines %}
+<div
+  id="upload-feedback-slot"
+  hx-swap-oob="innerHTML"
+  class="rounded-md border border-slate-700 bg-slate-900/70 p-3 text-sm {% if alerts_error %}text-rose-200{% elif alerts_success %}text-teal-200{% else %}text-amber-200{% endif %}"
+>
+  {% for line in alert_lines %}
+    <p>{{ line }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div id="originals-list-root" hx-swap-oob="innerHTML">
+{% include "partials/originals_list.html" %}
+</div>

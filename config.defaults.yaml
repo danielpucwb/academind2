@@ -1,0 +1,19 @@
+# acadeMIND — bundled defaults merged with optional config.yaml at repo root.
+sqlite_path: database/academind.db
+storage_root: storage/cursos
+ffmpeg_path: ffmpeg
+whisper_model: large-v3
+max_parallel_jobs: 2
+logging_dir: logs
+max_upload_bytes: 536870912
+upload_chunk_bytes: 1048576
+allowed_extensions:
+  - pdf
+  - txt
+  - docx
+  - html
+  - mhtml
+  - mp4
+  - mp3
+  - wav
+  - m4a

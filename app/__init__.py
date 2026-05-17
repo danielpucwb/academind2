@@ -1,0 +1,1 @@
+"""acadeMIND application package."""

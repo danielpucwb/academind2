@@ -1,0 +1,32 @@
+/* acadeMIND — thin layer on Tailwind CDN */
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.htmx-indicator {
+  display: none;
+}
+
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+  display: inline;
+}
+
+.form-error {
+  color: rgb(251 113 133);
+}
+
+.upload-drop-zone--drag {
+  border-color: rgb(45 212 191 / 0.55);
+  background-color: rgb(15 118 110 / 0.15);
+  color: rgb(204 251 241);
+}
+
+.upload-drop-zone:focus-visible {
+  outline: 2px solid rgb(45 212 191 / 0.7);
+  outline-offset: 2px;
+}

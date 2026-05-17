@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Painel · acadeMIND{% endblock %}
+{% block content %}
+  <h1 class="text-2xl font-semibold mb-2">Cursos</h1>
+  <p class="text-slate-400 mb-6">Crie e organize cursos. Cada curso agrupa disciplinas no armazenamento.</p>
+  {% if error %}
+    <p class="mb-4 form-error">{{ error }}</p>
+  {% endif %}
+
+  <section class="mb-10 rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-lg font-medium mb-4">Novo curso</h2>
+    <form
+      class="flex flex-wrap gap-3 items-end"
+      method="post"
+      action="/ui/cursos"
+      hx-post="/ui/cursos"
+      hx-target="#course-rows"
+      hx-swap="outerHTML"
+      hx-indicator="#busy-cursos"
+    >
+      <label class="flex flex-col gap-1 text-sm">
+        <span class="text-slate-400">Nome</span>
+        <input
+          type="text"
+          name="nome"
+          required
+          class="rounded-md border border-slate-700 bg-slate-950 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-teal-600"
+        />
+      </label>
+      <button type="submit" class="rounded-md bg-teal-600 hover:bg-teal-500 px-4 py-2 font-medium">
+        Adicionar
+      </button>
+      <span id="busy-cursos" class="htmx-indicator text-xs text-slate-500">…</span>
+    </form>
+  </section>
+
+  <section class="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
+    <h2 class="text-lg font-medium mb-4">Lista</h2>
+    {% include "partials/course_rows.html" %}
+  </section>
+{% endblock %}

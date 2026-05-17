@@ -1,0 +1,27 @@
+<section class="rounded-xl border border-slate-800 bg-slate-900/40 p-6 text-slate-300 leading-relaxed space-y-4">
+  <h2 class="text-lg font-medium text-teal-300">Processados</h2>
+  <p class="text-slate-400 text-sm">
+    Consolidamos PDF originais alfabéticos em um único artefato
+    (<strong class="text-slate-200">concatenado.pdf</strong>) para uso na exportação.
+    As transcritas Faster‑Whisper serão referenciadas aqui na fase de pipeline de multimédia.
+  </p>
+  <div>
+    <form
+      class="flex flex-wrap items-center gap-3"
+      hx-post="/ui/disciplinas/{{ disciplina.id }}/merge-pdfs"
+      hx-target="#merge-feedback"
+      hx-swap="innerHTML"
+      hx-indicator="#merge-spinner"
+    >
+      <input type="hidden" name="curso_id" value="{{ course.id }}" />
+      <button
+        type="submit"
+        class="rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500 disabled:opacity-50"
+      >
+        Gerar concatenado.pdf
+      </button>
+      <span id="merge-spinner" class="htmx-indicator text-xs text-teal-500">Fundindo PDFs…</span>
+    </form>
+    <div id="merge-feedback" class="mt-4"></div>
+  </div>
+</section>

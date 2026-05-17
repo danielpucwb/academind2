@@ -1,0 +1,15 @@
+<div class="space-y-2 text-sm {% if level == 'error' %}text-rose-300{% elif level == 'success' %}text-teal-300{% else %}text-amber-200{% endif %}">
+  {% for m in messages %}
+    <p>{{ m }}</p>
+  {% endfor %}
+  {% if diags %}
+    <ul class="list-disc pl-5 text-xs text-slate-400 space-y-1">
+      {% for d in diags %}
+        <li>
+          <span class="font-mono text-slate-500">{{ d.code }}</span>
+          · {{ d.message_pt }}{% if d.filename %} <span>({{ d.filename }})</span>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

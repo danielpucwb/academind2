@@ -6,10 +6,10 @@ Ship a vertically sliced workstation app: scaffolding + trusted ingestion first,
 
 ## Phases
 
-- [ ] **Phase 1: Domain Shell & Foundations** — Courses/disciplines, configuration, `/health`, tabbed UX skeleton, foundational APIs.
-- [ ] **Phase 2: Trusted Ingestion & Catalog Backbone** — Multipart uploads, fingerprints, sanitized storage tree, originals UX, observability scaffolding.
+- [x] **Phase 1: Domain Shell & Foundations** — Courses/disciplines, configuration, `/health`, tabbed UX skeleton, foundational APIs.
+- [x] **Phase 2: Trusted Ingestion & Catalog Backbone** — Multipart uploads, fingerprints, sanitized storage tree, originals UX, observability scaffolding.
 - [ ] **Phase 3: Audio Normalization + GPU Whisper** — FFmpeg normalization, Faster-Whisper CUDA path with watchdog + queue visibility.
-- [ ] **Phase 4: Document Consolidation** — Deterministic alphabetical PDF merges surfaced in Processados.
+- [x] **Phase 4: Document Consolidation** — Deterministic alphabetical PDF merges surfaced in Processados.
 - [ ] **Phase 5: Export Bundles + UX Completion** — ZIP exports, guarded downloads/reprocess tooling, Projekt-token styling without Projekt branding, audit logging.
 
 ## Phase Details
@@ -36,9 +36,9 @@ Ship a vertically sliced workstation app: scaffolding + trusted ingestion first,
 
 Plans:
 
-- [ ] 01-01: Repository layout + SQLite schema bootstrap for hierarchy models.
-- [ ] 01-02: Router surface for hierarchy CRUD + HTMX stubs for dashboard/discipline shells.
-- [ ] 01-03: Config loader + observability scaffolding + `/health` composition.
+- [x] 01-01: Repository layout + SQLite schema bootstrap for hierarchy models.
+- [x] 01-02: Router surface for hierarchy CRUD + HTMX stubs for dashboard/discipline shells.
+- [x] 01-03: Config loader + observability scaffolding + `/health` composition.
 
 ---
 
@@ -58,13 +58,13 @@ Plans:
 4. Job ledger rows persist with `pending` states even before FFmpeg touches data.
 5. Upload/API logs include correlation identifiers referencing job identifiers.
 
-**Plans**: TBD
+**Plans**: 3 plans (waves **2a/2b/2c →** `02-01`/`02-02`/`02-03` in [.planning/phases/02-trusted-ingestion-catalog-backbone/](.planning/phases/02-trusted-ingestion-catalog-backbone/)
 
 Plans:
 
-- [ ] 02-01: Multipart ingestion service + chunked temp handling + hashing pipeline.
-- [ ] 02-02: Originals partials + JOB row lifecycle writes + OBS-01 log sink.
-- [ ] 02-03: Frontend drag/drop affordances tying into HTMX progress placeholders.
+- [x] 02-01: Multipart ingestion service + chunked temp handling + hashing pipeline. *(wave **2a** shipped)*
+- [x] 02-02: Originals partials + JOB row lifecycle writes + OBS-01 log sink. *(wave **2b** shipped)*
+- [x] 02-03: Frontend drag/drop affordances tying into HTMX progress placeholders. *(wave **2c** shipped)*
 
 ---
 
@@ -99,7 +99,7 @@ Plans:
 
 **Mode:** mvp
 
-**Depends on**: Phase 3
+**Depends on**: Phase 3 *(merge shipped with interim `MergeLock`; replace with JOB-02 row lock when **`03-01`** executes)* 
 
 **Requirements**: DOC-01
 
@@ -108,11 +108,11 @@ Plans:
 2. Processados tab previews merged PDF linkage once produced.
 3. Merge operation honours concurrency locks inherited from JOB subsystem.
 
-**Plans**: TBD
+**Plans**: 1 plan — [`04-document-consolidation`](.planning/phases/04-document-consolidation/)
 
 Plans:
 
-- [ ] 04-01: `pypdf` merge orchestration + deterministic output pathing + failure telemetry.
+- [x] 04-01: `pypdf` merge orchestration + deterministic output pathing + failure telemetry.
 
 ---
 
@@ -149,8 +149,8 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Domain Shell & Foundations | 0/3 | Not started | — |
-| 2. Trusted Ingestion Backbone | 0/3 | Not started | — |
+| 1. Domain Shell & Foundations | 3/3 | Complete | Phase 1 |
+| 2. Trusted Ingestion Backbone | 3/3 | Complete · **02-01 … 02-03** | Phase 2 |
 | 3. Audio Normalize + Whisper | 0/3 | Not started | — |
-| 4. Document Consolidation | 0/1 | Not started | — |
+| 4. Document Consolidation | 1/1 | Complete · **04-01** | Phase 4 |
 | 5. Export + UX Completion | 0/3 | Not started | — |

@@ -1,0 +1,72 @@
+<div class="rounded-lg border border-slate-800 bg-slate-950/60 p-4 upload-drop-shell space-y-4">
+  <p class="text-sm text-slate-400">
+    Biblioteca ingestível — pode largar vários ficheiros na zona tracejada ou utilizar os botões.
+  </p>
+
+  <div id="upload-feedback-slot" class="min-h-0 space-y-1" aria-live="polite"></div>
+
+  <div
+    data-role="dz"
+    class="upload-drop-zone rounded-lg border border-dashed border-slate-700 bg-slate-900/30 p-6 text-center text-sm text-slate-500 transition-colors duration-150"
+  >
+    Arraste e largue aqui (PDF, áudio e vídeo permitidos pela configuração).
+  </div>
+
+  <form
+    id="disc-upload-form-{{ disciplina.id }}"
+    class="flex flex-wrap items-center gap-3"
+    hx-post="/ui/cursos/{{ course.id }}/disciplinas/{{ disciplina.id }}/upload-htmx"
+    hx-encoding="multipart/form-data"
+    hx-target="#htmx-upload-response-sink"
+    hx-swap="innerHTML"
+    hx-indicator="#upload-btn-spinner-{{ disciplina.id }}"
+  >
+    <input type="hidden" name="curso_id" value="{{ course.id }}" />
+    <input id="disc-upload-input-{{ disciplina.id }}" type="file" name="files" multiple required class="sr-only peer" aria-label="Ficheiros para enviar" />
+
+    <label
+      for="disc-upload-input-{{ disciplina.id }}"
+      class="rounded-lg border border-teal-500/40 bg-teal-900/30 px-3 py-2 text-sm cursor-pointer peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-teal-400"
+    >
+      Escolher ficheiros
+    </label>
+
+    <button type="submit" class="rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500 disabled:opacity-50">
+      Enviar agora
+    </button>
+
+    <span id="upload-btn-spinner-{{ disciplina.id }}" class="htmx-indicator text-xs text-teal-500">A enviar…</span>
+  </form>
+
+  <div id="htmx-upload-response-sink"></div>
+
+  <script>
+    (function () {
+      var shell = document.currentScript.closest(".upload-drop-shell");
+      if (!shell) return;
+      var input = shell.querySelector('[id^="disc-upload-input-"]');
+      var dz = shell.querySelector('[data-role="dz"]');
+      var form = shell.querySelector('[id^="disc-upload-form-"]');
+      if (!input || !dz || !form) return;
+
+      ["dragenter", "dragover"].forEach(function (evn) {
+        dz.addEventListener(evn, function (ev) {
+          ev.preventDefault();
+          dz.classList.add("upload-drop-zone--drag");
+        });
+      });
+
+      dz.addEventListener("dragleave", function () {
+        dz.classList.remove("upload-drop-zone--drag");
+      });
+
+      dz.addEventListener("drop", function (ev) {
+        ev.preventDefault();
+        dz.classList.remove("upload-drop-zone--drag");
+        if (!ev.dataTransfer || !ev.dataTransfer.files.length) return;
+        input.files = ev.dataTransfer.files;
+        window.htmx.trigger(form, "submit");
+      });
+    })();
+  </script>
+</div>
